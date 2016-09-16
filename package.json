@@ -9,6 +9,7 @@
     "url": "git+https://github.com/SamVerschooten/blueprint.git"
   },
   "scripts": {
+    "prestart": "typings install",
     "start": "npm run release && node dist/server",
     "release": "tsc && rimraf dist && webpack --config webpack/webpack.js --progress --colors --bail && node out/tools/build.js",
     "dev": "webpack-dev-server --config webpack/webpack.js --inline --progress --port 8080 --open",
