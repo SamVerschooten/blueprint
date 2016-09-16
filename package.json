@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "npm run release && node dist/server",
-    "release": "rimraf dist && webpack --config webpack/webpack.js --progress --colors --bail && node out/tools/build.js",
+    "release": "tsc && rimraf dist && webpack --config webpack/webpack.js --progress --colors --bail && node out/tools/build.js",
     "dev": "webpack-dev-server --config webpack/webpack.js --inline --progress --port 8080 --open",
     "postinstall": "typings install",
     "tsc": "tsc",
@@ -52,5 +52,9 @@
     "watch": "^0.19.2",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"
+  },
+  "engines": {
+    "node": "^6.1.0",
+    "npm": "^3.8.6"
   }
 }
