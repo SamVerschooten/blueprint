@@ -1,0 +1,17 @@
+{
+  "name": "blueprint",
+  "version": "0.0.1",
+  "description": "Blueprint project useful to bootstrap new apps",
+  "author": "Hatch Software",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamVerschooten/blueprint.git"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
