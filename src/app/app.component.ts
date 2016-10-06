@@ -1,5 +1,5 @@
 import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
-//import {MdSidenav} from '@angular/material/sidenav';
+import {MdSidenav} from "@angular/material";
 
 @Component({
     styles: [require("./app.scss")],
@@ -7,21 +7,23 @@ import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
     encapsulation: ViewEncapsulation.None,
     template: `
 		<md-sidenav-layout>
-		    <md-sidenav #start (open)="mybutton.focus()">
+		    <md-sidenav #side (open)="mybutton.focus()">
 		      Start Sidenav.
-		      <button md-button #mybutton (click)="start.close()">Close</button>
+		      <button md-button #mybutton (click)="side.close()">Close</button>
 		    </md-sidenav>		   
 		    
-		   	<button md-button (click)="start.toggle()">Toggle Start Side Drawer</button>
+		   	<button md-button (click)="toggle()">Toggle Start Side Drawer</button>
+            <md-input placeholder="amount" align="end">
+            </md-input>
 	  	</md-sidenav-layout>
     `
 })
 export class AppComponent { 
 
-	//@ViewChild('start')
-	//sideNav:MdSidenav
+	@ViewChild('side')
+	sideNav:MdSidenav;
 
-	// toggle() {
-	// 	this.sideNav.toggle();
-	// }
+	toggle() {
+        this.sideNav.toggle();
+	}
 }
