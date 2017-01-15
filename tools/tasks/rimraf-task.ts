@@ -6,7 +6,7 @@ export class RimRafTask {
             console.log('cleaning location: ' + path);
 
             let rimraf = require('rimraf');
-            rimraf(path, (err) => {
+            rimraf(path, (err : any) => {
                 if (err) {
                     console.log('error', err);
                     reject(err);

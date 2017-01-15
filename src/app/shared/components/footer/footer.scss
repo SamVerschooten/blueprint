@@ -1,0 +1,18 @@
+@import '../../../global.scss';
+
+footer {
+  height: 60px;
+  padding: 20px 0;
+
+  background-color: $color-darkest;
+  color: white;
+}
+
+.info {
+  font-size: 0.8em;
+  vertical-align: top;
+}
+
+.copyright {
+  text-align: right;
+}

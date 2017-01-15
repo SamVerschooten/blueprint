@@ -1,0 +1,24 @@
+@import '../../../global.scss';
+@import url(http://fonts.googleapis.com/css?family=Delius);
+
+header {
+  height: 60px;
+  padding: 20px 0;
+
+  .header--left {
+    font-size: 1.4em;
+    float: left;
+    line-height: 20px; 
+    color: $color-medium;
+  }
+
+  .header--right{
+    float: right;
+  }
+
+  a {
+    font-size: 1em;
+    line-height: 20px;
+    margin: 0 16px;
+  }
+}

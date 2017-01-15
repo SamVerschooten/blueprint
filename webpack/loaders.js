@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = [
     {
         test: /\.ts/,
@@ -13,6 +11,18 @@ module.exports = [
     },
     {
         test: /\.scss$/,
-        loader: 'raw-loader!sass-loader',
+        loader: 'raw-loader!sass-loader'
+    },
+    {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=8192'
+    },
+    {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff"
+    },
+    {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
     }
 ];
