@@ -1,10 +1,10 @@
 export class WatchTask {
 
-    static run(location:string, callback):void {
+    static run(location:string, callback: any):void {
 
         let watch = require('watch');
 
-        watch.watchTree(location, function (f, curr, prev) {
+        watch.watchTree(location, function (f : any, curr: any, prev: any) {
             if (typeof f == "object" && prev === null && curr === null) {
                 console.log('started watching for file changes on (' + location + ')...');
             } else if (prev === null) {

@@ -2,10 +2,8 @@ const webpack = require("webpack");
 const path = require('path');
 const loaders = require('./loaders');
 
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-var StringReplacePlugin = require("string-replace-webpack-plugin");
 
 var ENV = process.env.npm_lifecycle_event;
 var isProd = ENV === 'release';
@@ -15,14 +13,18 @@ module.exports = function makeWebpackConfig() {
     var config = {};
 
     config.entry = {
+        polyfills: './src/setup/polyfills.ts',
         app: "./src/main",
         vendor: [
             '@angular/common',
             '@angular/compiler',
             '@angular/core',
+            '@angular/forms',
             '@angular/http',
             '@angular/platform-browser',
-            '@angular/platform-browser-dynamic'
+            '@angular/platform-browser-dynamic',
+            '@angular/router',
+            '@angular/upgrade'
         ]
     };
 
@@ -46,50 +48,39 @@ module.exports = function makeWebpackConfig() {
     config.debug = !isProd;
 
     config.module = {
-        loaders: loaders.concat([
-            {
-                test: /config.ts$/,
-                loader: StringReplacePlugin.replace({
-                    replacements: [
-                        {
-                            pattern: '%API_URL_KEY%',
-                            replacement: function () {
-                                return isProd? 'https://rebound-api.herokuapp.com/' : 'http://localhost:8081/';
-                            }
-                        }
-                    ]
-                })
-            }
-        ])
+        loaders: loaders
     };
 
     config.plugins = [
         new CopyWebpackPlugin([
-            {from: 'node_modules/core-js/client/shim.min.js', to: 'node_modules/core-js/client/shim.min.js'},
-            {from: 'node_modules/zone.js/dist/zone.js', to: 'node_modules/zone.js/dist/zone.js'},
-            {from: 'node_modules/reflect-metadata/Reflect.js', to: 'node_modules/reflect-metadata/Reflect.js'}
+            {from: 'src/assets/images', to: 'assets/images/'}
         ]),
-        new StringReplacePlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery',
-            'window.jquery': 'jquery',
-            'foundation': 'foundation'
+            'window.jquery': 'jquery'
         }),
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"assets/vendor.bundle.js"),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['polyfills', 'vendor', 'app'].reverse()
+        }),
+        new webpack.optimize.UglifyJsPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             chunksSortMode: 'dependency',
             inject: 'body',
             hash: true
         }),
-        new OpenBrowserPlugin({url: 'http://localhost:8080'}),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'ENV': JSON.stringify(isProd ? "PRD" : "DEV")
+            }
+        })
     ];
 
     config.devServer = {
         historyApiFallback: true,
-        stats: { colors: true }
+        stats: {colors: true}
     };
 
     return config;

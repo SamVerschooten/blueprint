@@ -11,7 +11,7 @@ export class CopyTask {
                 console.log('copying ...');
 
                 //copy and drop x levels of directory hierarchy: src/main/server
-                copyfiles(path, levels, (err) => {
+                copyfiles(path, levels, (err: any) => {
                         if (err) {
                             console.log('error', err);
                             reject(err);
