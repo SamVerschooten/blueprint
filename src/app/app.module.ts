@@ -6,8 +6,8 @@ import {routing} from './app.routing';
 
 import {AppComponent} from './app.component';
 
-import {HomePage} from './home/home.page';
-import {AboutPage} from './about/about.page';
+import {FirstPage} from './first/first.page';
+import {SecondPage} from './second/second.page';
 
 import {HeaderComponent} from './shared/components/header/header.component';
 import {FooterComponent} from './shared/components/footer/footer.component';
@@ -21,8 +21,8 @@ import {FooterComponent} from './shared/components/footer/footer.component';
         routing],
     declarations: [
         AppComponent,
-        HomePage,
-        AboutPage,
+        FirstPage,
+        SecondPage,
         FooterComponent,
         HeaderComponent],
     bootstrap: [AppComponent]

@@ -1,26 +1,26 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomePage } from './home/home.page';
-import { AboutPage } from './about/about.page';
+import { FirstPage } from './first/first.page';
+import { SecondPage } from './second/second.page';
 
 export class AppUrls {
-    public static homeUrl = 'home';
-    public static aboutUrl = 'about';
+    public static firstUrl = 'first';
+    public static secondUrl = 'second';
 }
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: AppUrls.homeUrl,
+        redirectTo: AppUrls.firstUrl,
         pathMatch: 'full'
     },
     {
-        path: AppUrls.homeUrl,
-        component: HomePage
+        path: AppUrls.firstUrl,
+        component: FirstPage
     },
     {
-        path: AppUrls.aboutUrl,
-        component: AboutPage
+        path: AppUrls.secondUrl,
+        component: SecondPage
     }
 ];
 

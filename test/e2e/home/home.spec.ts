@@ -1,15 +1,15 @@
 import {browser} from 'protractor';
-import {HomePageObject} from "./home.page-object";
+import {HomePageObject} from './home.page-object';
 
-describe('Home Page', function () {
+describe('Home Page',  () => {
 
     let homePageObject = new HomePageObject();
 
-    beforeEach(function () {
+    beforeEach( () => {
         homePageObject.open();
     });
 
-    it('should have a title', function () {
+    it('should have a title',  () => {
         expect(browser.getTitle()).toEqual('Scorpio');
     });
 

@@ -9,8 +9,8 @@ import {Component} from '@angular/core';
                     Blueprint                
                 </div>
                 <div class="header--right">                    
-                    <a routerLink="/home">Home</a>                    
-                    <a routerLink="/about">About Us</a>                    
+                    <a routerLink="/first">First page</a>                    
+                    <a routerLink="/second">Second page</a>                    
                 </div>                
             </div>
         </header>        

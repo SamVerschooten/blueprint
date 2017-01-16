@@ -1,15 +1,15 @@
 import {browser} from 'protractor';
-import {AboutPageObject} from "./about.page-object";
+import {AboutPageObject} from './about.page-object';
 
-describe('About Page', function () {
+describe('About Page', () => {
 
     let aboutPageObject = new AboutPageObject();
 
-    beforeEach(function () {
+    beforeEach(() => {
         aboutPageObject.open();
     });
 
-    it('should have a title', function () {
+    it('should have a title', () => {
         expect(browser.getTitle()).toEqual('Scorpio');
     });
 });
