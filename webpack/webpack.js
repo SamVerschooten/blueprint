@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const path = require('path');
-const loaders = require('./loaders');
+const rules = require('./rules');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -35,7 +35,7 @@ module.exports = function makeWebpackConfig() {
     };
 
     config.resolve = {
-        extensions: ['', 'ts', 'js', '.js', '.ts']
+        extensions: ['ts', 'js', '.js', '.ts']
     };
 
     if (isProd) {
@@ -44,11 +44,8 @@ module.exports = function makeWebpackConfig() {
         config.devtool = 'eval-source-map';
     }
 
-    // add debug messages
-    config.debug = !isProd;
-
     config.module = {
-        loaders: loaders
+        rules: rules
     };
 
     config.plugins = [
@@ -64,7 +61,9 @@ module.exports = function makeWebpackConfig() {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['polyfills', 'vendor', 'app'].reverse()
         }),
-        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             chunksSortMode: 'dependency',
@@ -75,6 +74,10 @@ module.exports = function makeWebpackConfig() {
             'process.env': {
                 'ENV': JSON.stringify(isProd ? "PRD" : "DEV")
             }
+        }),
+        new webpack.LoaderOptionsPlugin({
+            debug: !isProd,
+            minimize: true
         })
     ];
 
