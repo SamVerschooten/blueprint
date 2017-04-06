@@ -15,17 +15,7 @@ module.exports = function makeWebpackConfig() {
     config.entry = {
         polyfills: './src/setup/polyfills.ts',
         app: "./src/main",
-        vendor: [
-            '@angular/common',
-            '@angular/compiler',
-            '@angular/core',
-            '@angular/forms',
-            '@angular/http',
-            '@angular/platform-browser',
-            '@angular/platform-browser-dynamic',
-            '@angular/router',
-            '@angular/upgrade'
-        ]
+        vendor: './src/setup/vendor.ts'
     };
 
     config.output = {

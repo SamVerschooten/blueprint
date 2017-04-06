@@ -15,27 +15,43 @@
       }
     ],
     "interface-name": [
-      true,
-      "always-prefix"
+      false
     ],
     // Angular 2
-    "component-class-suffix": [true, "Component","Page"],
-    "component-selector": [true, "element", "blp", "kebab-case"],
+    "component-class-suffix": [
+      true,
+      "Component",
+      "Container",
+      "Page"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "blp",
+      "kebab-case"
+    ],
     "directive-class-suffix": true,
-    "directive-selector": [true, "attribute", "blp", "camelCase"],
+    "directive-selector": [
+      true,
+      "attribute",
+      "blp",
+      "camelCase"
+    ],
     "import-destructuring-spacing": false,
     "invoke-injectable": true,
-    "no-access-missing-member": true,
     "no-attribute-parameter-decorator": true,
     "no-forward-ref": true,
     "no-input-rename": true,
     "no-output-rename": true,
+    "no-empty": false,
+    "no-trailing-whitespace": false,
     "pipe-naming": [
       true,
       "camelCase",
       "blp"
     ],
-    "templates-use-public": true,
+    "member-ordering": false,
+    "templates-use-public": false,
     "use-host-property-decorator": true,
     "use-input-property-decorator": true,
     "use-life-cycle-interface": true,
@@ -52,23 +68,15 @@
       true,
       5000
     ],
+    "max-classes-per-file":5,
     "no-var-requires": false,
     "no-string-literal": false,
     "no-use-before-declare": true,
     "object-literal-sort-keys": false,
+    "object-literal-key-quotes": false,
+    "only-arrow-functions":false,
     "ordered-imports": false,
-    "quotemark": [
-      true,
-      "single",
-      "avoid-escape"
-    ],
-    "variable-name": [
-      true,
-      "check-format",
-      "allow-leading-underscore",
-      "allow-trailing-underscore",
-      "allow-pascal-case",
-      "ban-keywords"
-    ]
+    "quotemark":false,
+    "eofline": false
   }
 }

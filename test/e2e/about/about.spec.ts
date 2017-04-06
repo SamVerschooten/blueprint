@@ -10,6 +10,6 @@ describe('About Page', () => {
     });
 
     it('should have a title', () => {
-        expect(browser.getTitle()).toEqual('Scorpio');
+        expect(browser.getTitle()).toEqual('Blueprint');
     });
 });
