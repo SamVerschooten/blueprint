@@ -1,12 +1,12 @@
 import {browser} from 'protractor';
-import {AboutPageObject} from './about.page-object';
+import {FirstPageObject} from "./frist.page-object";
 
-describe('About Page', () => {
+describe('First Page', () => {
 
-    let aboutPageObject = new AboutPageObject();
+    let firstPageObject = new FirstPageObject();
 
     beforeEach(() => {
-        aboutPageObject.open();
+        firstPageObject.open();
     });
 
     it('should have a title', () => {
