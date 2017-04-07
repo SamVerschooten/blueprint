@@ -1,30 +1,24 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {HttpModule, JsonpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
-import {routing} from './app.routing';
-
+import {RoutingModule} from './routing/routing.module';
 import {AppComponent} from './app.component';
-
 import {FirstPage} from './first/first.page';
 import {SecondPage} from './second/second.page';
-
-import {HeaderComponent} from './shared/components/header/header.component';
-import {FooterComponent} from './shared/components/footer/footer.component';
+import {CoreModule} from "./core/core.module";
+import {NotFoundPage} from "./not-found/not-found.page";
+import {SharedModule} from "./shared.module";
 
 @NgModule({
     imports: [
-        BrowserModule,
-        HttpModule,
-        JsonpModule,
-        FormsModule,
-        routing],
+        SharedModule,
+        CoreModule,
+        RoutingModule],
     declarations: [
         AppComponent,
         FirstPage,
         SecondPage,
-        FooterComponent,
-        HeaderComponent],
+        NotFoundPage
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,8 +3,7 @@ import {CopyTask} from './tasks/copy-task';
 class Builder {
 
     private SERVER_PATH: string[];
-    private COPY_PATH:string[];
-    private LEVEL:number;
+    private COPY_PATH: string[];
 
     constructor() {
         this.COPY_PATH = [
@@ -18,16 +17,15 @@ class Builder {
             'src/assets/**/*.png',
             'src/assets/**/*.jpg',
             'dist/'];
-        this.SERVER_PATH=[
-            'server/**/*.js',
-            'server/**/*.js.map',
+        this.SERVER_PATH = [
+            'out/server/**/*.js',
+            'out/server/**/*.js.map',
             'dist/'];
     }
 
-    build() {
-        let self = this;
+    public build() {
         CopyTask.run(this.COPY_PATH, 1);
-        CopyTask.run(this.SERVER_PATH, 1);
+        CopyTask.run(this.SERVER_PATH, 2);
     }
 }
 
