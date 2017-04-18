@@ -8,18 +8,39 @@
 body {
   font-family: 'Open sans', Helvetica, Arial, sans-serif;
   color: $color-darkest;
+  height: 100%;
+  margin: 0;
 }
 
-h3 {
-  margin-bottom: 18px;
+h3{
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 1em;
 }
 
-a {
-  color: $color-darkest;
-  &:visited {
-    color: $color-darkest;
-  }
-  &:hover {
-    color: $color-medium;
+//============================//
+//====== APP COMPONENTS ======//
+//============================//
+
+.content{
+  padding: 20px;
+}
+
+.spinner {
+  position: absolute;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0.5;
+  z-index: 2000;
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
   }
 }

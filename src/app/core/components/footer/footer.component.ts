@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
                     </div>
             	    <div class="columns large-6">
             	        <div class="copyright">
-            	            <small>© 2016</small>
+            	            <small>© 2017 Hatch Software</small>
                         </div>            	        
                     </div>            	    
                 </div>                        	

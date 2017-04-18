@@ -1,8 +1,12 @@
 @import '../../../global.scss';
 
 footer {
-  height: 60px;
-  padding: 20px 0;
+  position: absolute;
+  height: 40px;
+  padding: 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   background-color: $color-darkest;
   color: white;

@@ -1,14 +1,20 @@
 import {Injectable} from '@angular/core';
+import {disableBusy, enableBusy} from "../actionCreators";
+import {Store} from "@ngrx/store";
+import {ApplicationState} from "../state/ApplicationState";
 
 @Injectable()
 export class BusyIndicatorService {
 
     private busyKeys: string[] = [];
 
+    constructor(private store: Store<ApplicationState>) {
+    }
+
     public setBusy(key: string) {
         if (this.busyKeys.indexOf(key) === -1) {
             this.busyKeys.push(key);
-            // enable loader
+            this.store.dispatch(enableBusy());
         }
     }
 
@@ -18,7 +24,7 @@ export class BusyIndicatorService {
             this.busyKeys.splice(keyIndex, 1);
         }
         if (this.busyKeys.length === 0) {
-            // disable loader
+            this.store.dispatch(disableBusy());
         }
     }
 }

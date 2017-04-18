@@ -14,7 +14,7 @@ export class HttpGatewayService {
 
     public get(url: string, actionKey?: string, headers?: Headers): Observable<any> {
         this.trySetBusy(actionKey);
-        return this.http.get(url, new RequestOptions({
+        return this.http.get(this.resolveUrl(url), new RequestOptions({
             headers: headers ? headers : this.headers,
             withCredentials: true
         }))
@@ -25,13 +25,17 @@ export class HttpGatewayService {
 
     public post(url: string, body: any, actionKey?: string, headers?: Headers): Observable<any> {
         this.trySetBusy(actionKey);
-        return this.http.post(url, body, new RequestOptions({
+        return this.http.post(this.resolveUrl(url), body, new RequestOptions({
             headers: headers ? headers : this.headers,
             withCredentials: true
         }))
             .map(this.checkResponse)
             .catch(this.handleError)
             .finally(() => this.trySetIdle(actionKey));
+    }
+
+    private resolveUrl(url: string) {
+        return process.env.API_URL + url;
     }
 
     private trySetBusy(actionKey?: string) {

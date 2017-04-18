@@ -5,10 +5,9 @@ const rules = require('./rules');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-var ENV = process.env.npm_lifecycle_event;
-var isProd = ENV === 'release';
-
-module.exports = function makeWebpackConfig() {
+module.exports = function makeWebpackConfig(options) {
+    console.log("Webpack options:");
+    console.log(options);
 
     var config = {};
 
@@ -28,12 +27,6 @@ module.exports = function makeWebpackConfig() {
         extensions: ['ts', 'js', '.js', '.ts']
     };
 
-    if (isProd) {
-        config.devtool = 'source-map';
-    } else {
-        config.devtool = 'eval-source-map';
-    }
-
     config.module = {
         rules: rules
     };
@@ -51,9 +44,6 @@ module.exports = function makeWebpackConfig() {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['polyfills', 'vendor', 'app'].reverse()
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true
-        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             chunksSortMode: 'dependency',
@@ -62,19 +52,16 @@ module.exports = function makeWebpackConfig() {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(isProd ? "PRD" : "DEV")
+                'ENV': JSON.stringify(options.metaData.ENV),
+                'NODE_ENV': JSON.stringify(options.metaData.ENV),
+                'API_URL' : JSON.stringify(options.metaData.API_URL)
             }
         }),
         new webpack.LoaderOptionsPlugin({
-            debug: !isProd,
+            debug: options.debug,
             minimize: true
         })
     ];
 
-    config.devServer = {
-        historyApiFallback: true,
-        stats: {colors: true}
-    };
-
     return config;
-}();
+};

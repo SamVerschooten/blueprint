@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as http from "http";
-import {Request, Response, NextFunction} from "express";
+import * as bodyParser from "body-parser";
+import {Request, Response} from "express";
 import * as router from "./routes/router";
 
 export class Server {
@@ -13,12 +14,14 @@ export class Server {
     constructor() {
         let app = express();
 
-        // set port
+        // get port
         let port = this.normalizePort(process.env.PORT || 3000);
-        app.set('port', port);
 
         // create server
         this.server = this.createServer(app, port);
+
+        // setup app
+        this.setupApp(app, port);
 
         // setup routes
         this.setupRoutes(app);
@@ -30,6 +33,17 @@ export class Server {
         server.on('error', (err) => this.onError(err, port));
         server.on('listening', () => this.onListening(port));
         return server;
+    }
+
+    private setupApp(app: express.Application, port: any) {
+        // set app port
+        app.set('port', port);
+
+        // mount json form parser
+        app.use(bodyParser.json());
+
+        // mount query string parser
+        app.use(bodyParser.urlencoded({extended: true}));
     }
 
     private setupRoutes(app: express.Application) {

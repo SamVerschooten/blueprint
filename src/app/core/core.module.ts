@@ -4,14 +4,23 @@ import {FooterComponent} from "./components/footer/footer.component";
 import {SharedModule} from "../shared.module";
 import {BusyIndicatorService} from "./services/busy-indicator.service";
 import {HttpGatewayService} from "./services/http-gateway.service";
+import {SpinnerComponent} from "./components/spinner/spinner.component";
+import {StoreModule} from "@ngrx/store";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {store} from "./store";
 
 @NgModule({
     imports: [
+        StoreModule.provideStore(store),
+        StoreDevtoolsModule.instrumentOnlyWithExtension({
+            maxAge: 30
+        }),
         SharedModule
     ],
     declarations: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        SpinnerComponent
     ],
     providers: [
         BusyIndicatorService,
@@ -19,7 +28,8 @@ import {HttpGatewayService} from "./services/http-gateway.service";
     ],
     exports: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        SpinnerComponent
     ]
 })
 export class CoreModule {

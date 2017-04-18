@@ -1,16 +1,16 @@
-var webpackConfig = require('./webpack/webpack');
+var webpackConfig = require('./webpack/webpack.prd');
 
 module.exports = function (config) {
     config.set({
         basePath: '',
         frameworks: ['jasmine'],
         files: [
-            './out/test/unit/**/*.spec.js'
+            './out/src/app/**/*.spec.js'
         ],
         exclude: [
         ],
         preprocessors: {
-            './out/test/unit/**/*.spec.js': ['webpack']
+            './out/src/app/**/*.spec.js': ['webpack']
         },
         webpack: {
             module: webpackConfig.module,

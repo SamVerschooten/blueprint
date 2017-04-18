@@ -2,7 +2,7 @@ import {Router, Request, Response} from 'express';
 
 let router = Router();
 router.get('/test', function (req: Request, res: Response) {
-    res.json({data: {test: "Hello"}});
+    setTimeout(() => res.json({data: {content: "Hello"}}), 3000);
 });
 
 export = router;
