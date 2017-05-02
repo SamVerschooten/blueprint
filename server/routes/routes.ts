@@ -1,7 +1,7 @@
 import * as path from "path";
 import {Router, Request, Response, NextFunction} from 'express';
-import * as authRouter from "./authRouter";
-import * as apiRouter from "./apiRouter";
+import authRoutes from "./auth.routes";
+import apiRoutes from "./api.routes";
 
 let router = Router();
 
@@ -18,8 +18,8 @@ router.use(function (request: Request, response: Response, next: NextFunction) {
 });
 
 // first all non root ('/') route definitions
-router.use('/auth', authRouter);
-router.use('/api', apiRouter);
+router.use('/auth', authRoutes);
+router.use('/api', apiRoutes);
 
 // at last, anything else under root route '/'
 // to facilitate the Angular 2 HTML 5 routing
@@ -27,4 +27,4 @@ router.get("/*", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../', 'index.html'));
 });
 
-export = router;
+export default router;

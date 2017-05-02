@@ -18,7 +18,7 @@ module.exports = function makeWebpackConfig(options) {
     };
 
     config.output = {
-        path: "./dist",
+        path: path.resolve(__dirname, '../dist'),
         filename: "assets/[name].bundle.js",
         publicPath: '/'
     };

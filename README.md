@@ -3,8 +3,6 @@
 Before starting make sure you've installed following tools
 - npm
 - node
-- typings
-- webpack
 
 Execute following commands when running for the first time:
 ```bash
@@ -22,7 +20,10 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 # DEVELOPMENT
 
 ```bash
-#launch a webpack server with watches:
+#make sure the server is running in dev mode
+npm run dev:backend
+
+#open another terminal and launch a webpack server with watches:
 npm run dev
 ```
 Go to [http://localhost:8080](http://localhost:8080) in your browser.

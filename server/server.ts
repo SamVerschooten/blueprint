@@ -2,7 +2,7 @@ import * as express from "express";
 import * as http from "http";
 import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
-import * as router from "./routes/router";
+import routes from "./routes/routes";
 
 export class Server {
     private server: any;
@@ -54,7 +54,7 @@ export class Server {
         app.use(express.Router());
 
         // link main route module to app
-        app.use('/', router);
+        app.use('/', routes);
 
         // for all routes not handled by the routes above, send 404 - Not found
         app.use((req: Request, res: Response) => {

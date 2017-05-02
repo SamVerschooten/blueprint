@@ -9,7 +9,7 @@ module.exports = [
     {
         test: /\.html$/,
         use: 'raw-loader',
-        exclude: 'index.html'
+        exclude: path.resolve(__dirname, '../src/index.html')
     },
     {
         test: /\.scss$/,
