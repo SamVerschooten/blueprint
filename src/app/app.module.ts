@@ -6,6 +6,7 @@ import {SecondPage} from './second/second.page';
 import {CoreModule} from "./core/core.module";
 import {NotFoundPage} from "./not-found/not-found.page";
 import {SharedModule} from "./shared.module";
+import {AreaChartComponent} from "./second/components/area-chart.component";
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import {SharedModule} from "./shared.module";
         AppComponent,
         FirstPage,
         SecondPage,
-        NotFoundPage
+        NotFoundPage,
+        AreaChartComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

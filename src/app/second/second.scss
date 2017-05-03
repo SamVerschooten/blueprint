@@ -1,1 +1,11 @@
 @import '../global.scss';
+
+.btns {
+  text-align: center;
+  .btn {
+    display: inline-block;
+    cursor: pointer;
+    width: 250px;
+    font-size: 30px;
+  }
+}
